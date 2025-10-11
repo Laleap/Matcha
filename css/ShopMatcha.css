@@ -1,0 +1,108 @@
+/* --- Product Section General Styles --- */
+.product {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the whole section */
+}
+
+.product h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #38761d; /* A rich, earthy matcha green */
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- Product Grid Container (Flexbox or Grid) --- */
+.product-matcha {
+    display: flex; /* Use Flexbox for centering and spacing */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 30px; /* Space between product cards */
+    justify-content: center; /* Center the cards if there aren't enough to fill the row */
+}
+
+/* --- Individual Product Card Styling --- */
+.product-grid {
+    border: 1px solid rgb(228, 226, 226);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%; /* Default to full width on mobile */
+    max-width: 300px; /* Max width for a single card */
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-grid:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-grid img {
+    width: 100%;
+    height: auto;
+    max-height: 250px; /* Keep image height reasonable */
+    object-fit: contain; /* Ensure the whole product is visible */
+    margin-bottom: 15px;
+    display: block;
+    border-radius: 4px;
+}
+
+.product-grid h3 {
+    font-size: 1.2em;
+    color:#38761d;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.product-grid p {
+    font-size: 1.5em;
+    color: #38761d; /* Highlight the price with the brand color */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-grid .product-link {
+    text-decoration: none; 
+    color: inherit;      
+    display: block;      
+}
+
+.add-to-cart-btn {
+    width: calc(100% - 40px); 
+    margin: 0 20px 20px 20px;
+}
+
+.btn {
+    display: block; /* Make the button full width of the card padding */
+    width: 100%;
+    background-color: #38761d;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 50px; /* Rounded corners for a modern look */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: red; /* Slightly brighter green on hover */
+}
+
+/* --- Responsive Adjustments --- */
+@media (min-width: 650px) {
+    /* On larger screens, set the width so more items fit per row */
+    .product-grid {
+        width: calc(50% - 15px); /* Two columns with spacing */
+    }
+}
+
+@media (min-width: 950px) {
+    /* On desktop, set the width for three columns */
+    .product-grid {
+        width: calc(33.333% - 20px); /* Three columns with spacing */
+    }
+}

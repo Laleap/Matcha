@@ -1,0 +1,577 @@
+
+:root {
+    --primary-green: #07642f;
+    --light-green: #eaf4e9;   
+    --text-color: #333333;
+    --header-height: 75px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: var(--header-height); 
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+ul {
+    list-style: none;
+}
+
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height); 
+    background-color: #FFFFFF; 
+    border-bottom: 1px solid #EEEEEE; 
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); 
+    z-index: 1000; 
+}
+
+.header-container {
+    
+    max-width: 1200px; 
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img {
+    height: 40px; 
+    width: auto;
+}
+
+.menu-toggle {
+    display: none; 
+}
+
+.menu-wrapper {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center; 
+    height: 100%;
+}
+
+.menu-list {
+    display: flex;
+    height: 100%;
+}
+
+.menu-list > li {
+    /* Parent list items */
+    position: relative; /* Essential for submenu positioning */
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.menu-list > li > a {
+    /* Main menu links */
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 0;
+    color: #013a17;
+    text-transform:uppercase;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu-list > li > a:hover {
+    color: var(--primary-green);
+}
+
+.submenu {
+    position: absolute;
+    top: var(--header-height); /* Drops down exactly below the header */
+    left: 10%;
+    max-width: 1200px;
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    
+    /* Initially hidden and smoothly transition visibility */
+    display: none; 
+    opacity: 0;
+    pointer-events: none; /* Ignore mouse events when hidden */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px); /* Start slightly lower */
+    z-index: 10; 
+}
+
+.menu-list > li:hover > .submenu {
+    /* Show submenu on hover */
+    display: block; 
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.submenu li a {
+    /* Submenu links */
+    display: block;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    white-space: nowrap; 
+    color:#013a17;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.submenu li a:hover {
+    background-color: var(--light-green);
+    color: var(--primary-green);
+}
+
+.header-icon {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color:#013a17;
+}
+
+.header-icon li {
+    display: inline-block;
+}
+
+.header-icon i {
+    font-size: 1.25rem;
+    color: var(--primary-green) !important; /* Override inline style */
+    transition: color 0.3s;
+}
+
+.header-icon li:hover i {
+    color: #000000 !important; /* Darken icon on hover */
+}
+
+/* Remove the list styling inherent to the icon div in the HTML */
+.header-icon a {
+    display: flex;
+    align-items: center;
+}
+
+/*
+    ======================================
+    7. MOBILE VIEW (Simple Hide/Show)
+    ======================================
+*/
+@media (max-width: 900px) {
+    /* Hide the full menu on mobile/tablet */
+    .menu-wrapper {
+        display: none;
+    }
+
+    /* Show the menu toggle icon */
+    .menu-toggle {
+        display: block;
+        order: 2; /* Position it before the icons on small screens */
+        cursor: pointer;
+    }
+
+    /* Basic styling for the hamburger icon */
+    .menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: var(--primary-green);
+        margin: 4px 0;
+    }
+}
+main{
+  width:75%;
+  margin:0 auto;
+  overflow:hidden;
+  /* background-color: #b3b4b3; */
+}
+/* --- 1. CORE VIEWPORT (The Frame) --- */
+/* This defines the visible area for the slider and positions the text content */
+.HomePage {
+    width: 100%;
+    min-height: 80vh; 
+    position: relative; 
+    overflow: hidden; /* CRUCIAL: Hides the slides that are off-screen */
+
+    /* Centers the text content over the slides */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    /* Removed conflicting static background-image, background-size, etc. */
+    /* Removed the conflicting height: 500px; */
+}
+
+/* Optional: Add a subtle overlay for better text contrast */
+.HomePage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Use a dedicated overlay over the slides for text legibility */
+    background-color: rgba(39, 143, 56, 0.2); 
+    z-index: 2; /* Below text (z-index: 3) */
+}
+
+/* --- 2. THE SLIDING TRACK (The Engine) --- */
+/* This element moves horizontally via JavaScript's transform: translateX() */
+.slide-track {
+    width: 400%; /* Total width for 4 slides (100% * 4) */
+    height: 100%;
+    display: flex; /* Makes slides sit side-by-side */
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    /* Hardware-accelerated smooth movement */
+    transition: transform 1s ease-in-out; 
+    z-index: 1; /* Below the overlay (z-index: 2) and text (z-index: 3) */
+}
+
+/* --- 3. INDIVIDUAL SLIDES --- */
+/* Each slide is a full viewport width section */
+.slide-item {
+    width: 25%; /* 100% / 4 slides = 25% per slide */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0; /* Prevents items from shrinking */
+}
+
+/* --- 4. TEXT CONTENT STYLES --- */
+.HomePage .text {
+    position: relative; /* Must be relative or absolute to ensure z-index works */
+    z-index: 3; /* Must be the highest layer to ensure text is visible */
+    
+    max-width: 700px;
+    color: white; 
+    padding: 20px;
+    background-blend-mode: var(--text-color);
+}
+
+.HomePage .text h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.HomePage .text p {
+    color: white;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* --- 5. CALL-TO-ACTION BUTTON (CTA) --- */
+.btn {
+    display: inline-block;
+    padding: 18px 35px;
+    background-color: #41b647; /* Primary button color */
+    color: #FFFFFF;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    letter-spacing: 1.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    border: 2px solid #41b647;
+}
+
+.btn:hover {
+    /* Corrected hover color to a darker green */
+    background-color: #38953d; 
+    border-color: #38953d;
+    transform: translateY(-2px); 
+}
+/* main content */
+.MainContent {
+    width: 1000px; /* Aligns with your header's max-width */
+    margin: 80px auto; /* Top/bottom margin, centered horizontally */
+    padding: 0 20px; /* Horizontal padding */
+    text-align: center; /* Center the main title */
+}
+.MainContent h1{
+  font-size: 2rem;
+  color:#013a17;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+.Daily{
+  width: 100%;
+  height: 100%;
+  margin:0 auto; 
+  justify-content: space-between;
+  display: flex;
+  /* background-color: #f10404;  */
+}
+.Daily-image{
+  width: 25%;
+  height:100%;
+}.Daily-image h3{
+  color:#013a17;
+  text-transform: uppercase;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Best Seller */
+.best-seller{
+  width:100%;
+  height:500px;
+  margin: 0 auto;
+  /* background-color: #9fc59d; */
+
+}
+.best-seller h1{
+  font-style: var(--primary-green);
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  color:#07642f;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+.product-container{
+  width: 100%;
+  height:100%;
+  /* background-color: rgb(230, 45, 45); */
+  justify-content: space-between;
+  display: flex;
+}
+.product-card{
+  width:23%;
+  height: 400px;
+  background-color: rgb(2, 73, 2);
+  display: block;
+  align-items: center;
+  border-radius: 2%;
+  margin: 5px;;
+}
+.product-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 20px rgba(60, 236, 104, 0.1);
+}
+.product-card img{
+  width:100%;
+  height:70%;
+  object-fit: cover;
+ 
+}
+.product-card h3, p{
+  margin: 5px;
+  text-align: center;
+  font-size: 1rem;
+  color: white;
+}
+.product-card .btn{
+  height:50px;
+  width:210px;
+  margin-left:16%;
+  align-items: center;
+  border: solid 1px white;
+}
+
+
+/* Recipes */
+.Recipes {
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto; /* Center the whole section */
+}
+
+.Recipes h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #4a6c4b; /* A nice matcha green color */
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.recipe-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.recipe-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+}
+.recipe-card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.recipe-card img {
+    width: 100%;
+    height: 250px; /* Fixed height for consistent card look */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+}
+
+.recipe-card h3 {
+    font-size: 1.4em;
+    color: #4a6c4b;
+    margin: 15px 15px 10px 15px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.recipe-card p {
+    font-size: 1em;
+    color: #555;
+    padding: 0 15px 15px 15px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+.Best-matcha {
+    padding: 0 20px 40px 20px; /* Padding for spacing */
+    max-width: 1200px;
+    margin: 0 auto;
+    float:left; /* Center the image/content */
+}
+.matcha-text h1{
+  color:#013a17;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  text-align: center;
+}
+.matcha-text p{
+  color:#013a17;
+  font-size: 1.5rem;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  margin:30px;
+}
+
+.about{
+  width:100%;
+  height:300px;
+  margin: 0 auto;
+  padding:20px;
+}
+
+
+
+ /* Footer Container */ 
+footer {
+  background-color: white;
+  color: #013a17;
+  font-family: 'Helvetica Neue', sans-serif;
+  padding: 40px 20px;
+  border-top: 1px solid #b3b4b3;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* Column Titles */
+.footer-column h4 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #07642f;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Links */
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: #2e7d32;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #2e7d32;
+}
+.footer-column img{
+  width: 150px;
+  height:50px;
+  margin: 50px;
+  align-items: center;
+}
+/* Social Links */
+.social-links li a {
+  display: inline-block;
+  padding-left: 24px;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+/* Payment Icons */
+.footer-payment ul {
+  margin-left: 35%;
+  list-style: none;
+  padding:0;
+  display: flex;
+  align-items: center;
+}
+.footer-payment ul li a {
+  display: inline-block;
+  padding: auto;
+  width: 40px;
+  height: 25px;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+
+/* Bottom Text */
+.footer-bottom p{
+  text-align: center;
+  font-size: 14px;
+  color: #07642f;
+}
+html {
+    scroll-behavior: smooth;
+}
