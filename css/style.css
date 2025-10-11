@@ -379,7 +379,7 @@ main{
 }
 .product-card img{
   width:100%;
-  height:70%;
+  height:80%;
   object-fit: cover;
  
 }
@@ -389,13 +389,19 @@ main{
   font-size: 1rem;
   color: white;
 }
-.product-card .btn{
+.product-card li{
+  margin: 5px;
+  text-align: center;
+  font-size: 1rem;
+  color: white;
+}
+/* .product-card .btn{
   height:50px;
   width:210px;
   margin-left:16%;
   align-items: center;
   border: solid 1px white;
-}
+} */
 
 
 /* Recipes */
@@ -409,7 +415,7 @@ main{
 .Recipes h1 {
     font-size: 2.5em;
     margin-bottom: 40px;
-    color: #4a6c4b; /* A nice matcha green color */
+    color: #07642f; /* A nice matcha green color */
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -448,17 +454,32 @@ main{
 }
 
 .recipe-card p {
-    font-size: 1em;
-    color: #555;
+    font-size: 1.3em;
+    color: #4a6c4b;
     padding: 0 15px 15px 15px;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
 }
 .Best-matcha {
     padding: 0 20px 40px 20px; /* Padding for spacing */
-    max-width: 1200px;
+    width:100%;
     margin: 0 auto;
-    float:left; /* Center the image/content */
+    float:left; 
+}
+.Best-matcha img{
+  width:50%;
+  height: auto;
+  float:left;
+  transition: transform 0.4s ease;
+}
+.Best-matcha img:hover{
+  transform: scale(1.05);
+}
+.matcha-text{
+  padding: 20px;
+  width: 50%;
+  margin: 0 auto;
+  float:right;
 }
 .matcha-text h1{
   color:#013a17;
@@ -475,14 +496,87 @@ main{
   text-align: center;
   margin:30px;
 }
-
-.about{
-  width:100%;
-  height:300px;
-  margin: 0 auto;
-  padding:20px;
+.matcha-text .btn{
+  margin-left: 40%;
+  align-items: center;
 }
+.about {
+width: 100%;
+margin: 0 auto;
+padding: 20px;
+      }
 
+        /* Container for each text-image block */
+        .box {
+            display: flex; /* Enable Flexbox for side-by-side layout */
+            align-items: center; /* Vertically align content in the middle */
+            gap: 40px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            background-color: #ecf0eb;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease; /* Interactivity: Subtle shadow on hover */
+        }
+
+        /* Interactivity: Enhance shadow on hover */
+        .box:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Text Block (Left Side by default) */
+        .about-text {
+            flex: 1; /* Allows text to take available space */
+            padding: 20px 0;
+        }
+
+        .about-text h1 {
+            color: #07642f; /* Dark Matcha Green */
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: left;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .about-text p {
+            color: #013a17; /* Very Dark Green */
+            font-size: 1.15rem;
+            margin-top: 20px;
+            text-align: justify;
+        }
+
+        /* Image Block (Right Side by default) */
+        .about-image {
+            flex-shrink: 0; /* Prevents image from shrinking */
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            overflow: hidden; /* Important for border-radius and hover effect */
+            border-radius: 5px;
+        }
+
+        .about-image img {
+            width: 30%;
+            height: 300px;
+            display: block;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.4s ease; /* Interactivity: Zoom effect */
+        }
+        
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Zig-Zag Pattern: Reverse the order of the second box on desktop */
+        .about .box:nth-child(2) {
+            flex-direction: row-reverse;
+        }
 
 
  /* Footer Container */ 
