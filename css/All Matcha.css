@@ -1,49 +1,45 @@
-/* --- Product Section General Styles --- */
 .product {
     padding: 60px 20px;
     text-align: center;
     width:100%;
     align-items: center;;
-    margin: 0 auto; /* Center the whole section */
+    margin: 0 auto; 
 }
-
 .product h1 {
     font-size: 2.5em;
     margin-bottom: 40px;
-    color: #38761d; /* A rich, earthy matcha green */
+    color: #38761d; 
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-/* --- Product Grid Container (Flexbox or Grid) --- */
 .product-matcha {
-    display: flex; /* Use Flexbox for centering and spacing */
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-    gap: 30px; /* Space between product cards */
-    justify-content: center; /* Center the cards if there aren't enough to fill the row */
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 30px;
+    justify-content: center; 
 }
 
-/* --- Individual Product Card Styling --- */
 .product-grid {
     border: 1px solid rgb(3, 167, 3);
     border-radius: 8px;
     overflow: hidden;
-    width: 100%; /* Default to full width on mobile */
-    max-width: 300px; /* Max width for a single card */
+    width: 100%; 
+    max-width: 300px; 
     padding: 20px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product-grid:hover {
-    transform: translateY(-3px); /* Slight lift on hover */
+    transform: translateY(-3px); 
     box-shadow: 0 6px 15px rgba(25, 83, 59, 0.1);
 }
 
 .product-grid img {
     width: 100%;
     height: 250px;
-    object-fit: cover; /* Ensure the whole product is visible */
+    object-fit: cover; 
     margin-bottom: 15px;
     display: block;
     border-radius: 4px;
@@ -58,7 +54,7 @@
 
 .product-grid p {
     font-size: 1.5em;
-    color: #38761d; /* Highlight the price with the brand color */
+    color: #38761d; 
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -70,18 +66,19 @@
 }
 
 .add-to-cart-btn {
-    width: calc(100% - 40px); 
-    margin: 0 20px 20px 20px;
+    width: calc(100% - 50px); 
+    margin: 30px 30px 30px 30px;
+   
 }
 
 .btn {
-    display: block; /* Make the button full width of the card padding */
+    display: block; 
     width: 70%;
     background-color: #5f8f4a;
     color: #fff;
     text-decoration: none;
     padding: 12px 25px;
-    border-radius: 10px; /* Rounded corners for a modern look */
+    border-radius: 10px; 
     font-weight: bold;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -89,7 +86,7 @@
 }
 
 .btn:hover {
-    background-color: red; /* Slightly brighter green on hover */
+    background-color: red; 
 }
 
 /* --- Responsive Adjustments --- */

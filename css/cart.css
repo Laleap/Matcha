@@ -1,0 +1,112 @@
+
+#cart-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px; 
+    height: 100%;
+    background: rgb(242, 243, 242);
+    box-shadow: -5px 0 15px rgba(60, 170, 69, 0.2);
+    z-index: 999; 
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.35s ease-out; 
+    transform: translateX(0); 
+}
+
+#cart-overlay.hidden {
+    transform: translateX(100%); 
+}
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#close-cart {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.promo-banner {
+    background-color: #509250;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#cart-content {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.empty-message {
+    color: #134113;
+    margin: 5px 0;
+}
+
+.cart-footer {
+    padding-top: 20px;
+}
+
+.total {
+    color: red;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#checkout-button {
+    background-color: #38761d; 
+    color: white;
+    border: none;
+    padding: 12px 0;
+    width: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+#checkout-button:hover {
+    background-color: #79a879;
+}
+
+.cart-icon-container {
+    position: relative; 
+    display: inline-block;
+}
+
+.cart-badge {
+    background-color: #38761d;
+    color: white;
+    position: absolute;
+    top: -8px; 
+    right: -10px; 
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+}

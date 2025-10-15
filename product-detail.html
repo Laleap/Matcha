@@ -5,120 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/ShopMatcha.css">
+    <link rel="stylesheet" href="/css/All Matcha.css">
+    <link rel="stylesheet" href="/css/product-detail.css">
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="/java/Script.js">
 </head>
-<style>
-    .container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.product-main-content {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap; /* Allows stacking on smaller screens */
-}
-
-.product-gallery, .product-info {
-    flex: 1 1 45%; /* Both columns take up about 45% of the space */
-}
-
-#main-product-image {
-    width: 100%;
-    max-height: 500px;
-    object-fit: contain;
-    border-radius: 8px;
-}
-
-#product-name {
-    font-size: 2.5em;
-    color: #38761d;
-    margin-bottom: 10px;
-}
-
-.product-price {
-    font-size: 2em;
-    font-weight: bold;
-    color: #b45f06; /* A contrasting color for price */
-    margin: 20px 0;
-}
-
-.product-details-list {
-    list-style: none;
-    padding: 15px 0;
-    border-top: 1px solid #eee;
-    margin-top: 20px;
-}
-/* --- Purchase Options Container --- */
-.purchase-options {
-    display: flex; /* Arrange buttons and input in a row */
-    align-items: center; /* Vertically align items */
-    gap: 10px; /* Space between elements */
-    margin-top: 30px;
-}
-
-/* --- Quantity Button & Input Group --- */
-.qty-btn {
-    /* Basic button styling */
-    background-color: #f0f0f0; /* Light background for neutral look */
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s, border-color 0.2s;
-}
-
-.qty-btn:hover {
-    background-color: #e0e0e0;
-    border-color: #ccc;
-}
-
-.qty-input {
-    /* Styling for the quantity text field */
-    width: 60px; /* Set a fixed width */
-    height: 40px;
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
-    /* Hide the default number input spinners/arrows */
-    -moz-appearance: textfield; 
-}
-.qty-input::-webkit-outer-spin-button,
-.qty-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-
-/* --- Add to Cart Button (Highly Prominent) --- */
-#add-to-cart-detail {
-    /* Use your primary brand green from previous steps */
-    background-color: #38761d; 
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    height: 40px;
-    flex-grow: 1; /* Make it take up the rest of the available space */
-    border-radius: 4px;
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#add-to-cart-detail:hover {
-    background-color: #4a9426; /* Slightly brighter green on hover */
-}
-</style>
 <body>
     <header>
             <div class="header-container">
@@ -135,25 +28,24 @@
                     <ul class="menu-list">
                         <li><a href="index.html">Home</a></li>
                         <li>
-                            <a href="#">Shop Matcha</i></a>
-                            <ul class="submenu">
-                                <li><a href="#">All Matcha</a></li>
-                                
+                            <a href="All Matcha.html">Shop Matcha</i></a>
+                            <!-- <ul class="submenu">
+                                <li><a href="All Matcha.html">All Matcha</a></li>
                                 <li><a href="#">Accessories</a></li>
                     
-                            </ul>
+                            </ul> -->
 
                         </li>
                             <li>
-                                <a href="#">Learn</a>
-                                <ul class="submenu">
+                                <a href="#Learn">Learn</a>
+                                <!-- <ul class="submenu">
                                     <li><a href="#">What is Matcha?</a></li>
                                     <li><a href="#">Matcha Prime</a></li>
                                     <li><a href="#">Health Benefits</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="#about us">About</a></li>
+                            <li><a href="#footer-contact">Contact</a></li>
                         </li>
                     </ul>    
                 </div>
@@ -161,17 +53,51 @@
                     <li><a href=""></a><i class="fa-solid fa-magnifying-glass" style="color:#07642f"></i></li>
                     <!-- Use fa-solid for free icons -->
                     <li><i class="fa-solid fa-user" style="color:#07642f"></i></li>
-                    <li><i class="fa-solid fa-cart-shopping" style="color: #07642f;"></i></li>
+            
+                    <li class="cart-icon-container">
+                        <a href="#" id="cart-icon-link">
+                            <i class="fa-solid fa-cart-shopping" style="color: #07642f;"></i>
+                            <span id="cart-item-count" class="cart-badge">0</span>
+                
+                        </a>
+                    </li>
                 </div>
+                <!-- card slide -->
+                <div id="cart-overlay" class="hidden">
+                        <div class="cart-header">
+                            <h2>YOUR CART</h2>
+                            <button id="close-cart">✕</button>
+                        </div>
+                        <div class="promo-banner">
+                            DISCOUNTS & FREE SHIPPING WITH MATCHA PRIME™
+                        </div>
+                        
+                        <div id="cart-content">
+                            <p class="empty-message">YOUR CART IS EMPTY!</p>
+                            <p class="empty-message">Add your favorite items to your cart.</p>
+                        </div>
+                        
+                        <div class="cart-footer">
+                            <div class="total">
+                                <span>Total:</span>
+                                <span id="cart-total">$0.00</span> 
+                                <button id="checkout-button">CHECKOUT</button>
+                            </div>
+                        </div>
+                </div>
+            
             </div>
     </header>
-    <div class="product-detail">
-        <div class="container">
-        <p class="breadcrumb"><a href="All Matcha.html"></a> > <span id="breadcrumb-name">Product Detail</span></p>
+    <!-- product detail -->
+    <div class="container">
+        <p class="breadcrumb">
+            <a href="All Matcha.html"></a> > 
+            <span id="breadcrumb-name">Product Detail</span>
+        </p>
         <div class="product-main-content">
             <div class="product-gallery">
                 <img id="main-product-image" src="" alt="Product Image">
-                </div>
+            </div>
 
             <div class="product-info">
                 <h1 id="product-name">Product Name Placeholder</h1>
@@ -192,8 +118,57 @@
                 </div>
             </div>
         </div>
+
+        <!-- product -->
+         <!-- All Products -->
+        <div class="product" id="product">
+                <h1>All Products</h1>
+    
+            <div class="product-matcha" id="product-list-container">
+        
+                <div class="product-grid" id="product-card-template" style="display: none;">
+                
+                    <a href="#" class="product-link">
+                        <img src="" alt="" class="product-img-main" data-hover-src="">
+                        <h3 class="product-title">Premium Matcha Green Tea</h3>
+                        <p class="product-price">$29.99</p>
+                    </a>
+                    <a href="#" class="btn add-to-cart-btn">Add to Card</a> 
+            </div>
+
+        </div>
+        <!-- Learn -->
+     <div class="Recipes" id="Learn">
+                <h1>Matcha Recipes</h1>
+                <div class="recipe-container">
+                    <div class="recipe-card">
+                        <img src="/image/Recipe1.webp" alt="Recipe 1">
+                        <h3>MATCHA PINEAPPLE</h3>
+                        <p>Combat bloating with our refreshing Matcha and Pineapple Duo—sip away discomfort and support digestion naturally!</p>
+                        
+                    </div>
+                    <div class="recipe-card">
+                        <img src="/image/Recipe2.webp" alt="Recipe 1">
+                        <h3>MATCHA PINEAPPLE</h3>
+                        <p>Combat bloating with our refreshing Matcha and Pineapple Duo—sip away discomfort and support digestion naturally!</p>
+                       
+                    </div>
+                    <div class="recipe-card">
+                        <img src="/image/Recipe3.webp" alt="Recipe 3">
+                        <h3>For Better tasting matcha</h3>
+                        <p>Unleash the full potential of your daily matcha ritual with these eight secrets to making a tastier matcha experience.</p>
+                        
+                    </div>
+
+                    <div class="recipe-card">
+                        <img src="/image/Recipe4.webp" alt="Recipe 3">
+                        <h3>MATCHA MARTINI</h3>
+                        <p>Discover the magic of matcha in mixology with Dr. Weil's signature martini—perfectly shaken, beautifully green, and a sip away from pure bliss.</p>
+                    </div>
+                </div>
+
     </div>
-    <footer>
+    <footer id="footer-contact">
         <div class="footer-container">
                 <div class="footer-columns">
                 <div class="footer-column">
@@ -268,102 +243,8 @@
         </div>
     </footer>
 </body>
-<script>
-document.addEventListener('DOMContentLoaded', async () => {
-    // --- 1. Get the Product ID from the URL ---
-    const urlParams = new URLSearchParams(window.location.search);
-    // Assumes the URL is like: product-detail.html?id=matcha001
-    const productId = urlParams.get('id');
-
-    if (!productId) {
-        document.getElementById('product-name').textContent = "Product ID Missing. Cannot load details.";
-        return;
-    }
-
-    // --- 2. Fetch the Product Data (Using the sample structure) ---
-    // NOTE: In a real environment, replace 'products.json' with your actual file path or API endpoint.
-    let product;
-    try {
-        const response = await fetch('products.json');
-        const products = await response.json();
-        
-        // Find the specific product object that matches the ID
-        product = products.find(p => p.id === productId);
-
-    } catch (error) {
-        console.error("Error fetching or parsing product data:", error);
-        document.getElementById('product-name').textContent = "Error loading product data.";
-        return;
-    }
-
-    if (!product) {
-        document.getElementById('product-name').textContent = `Product with ID "${productId}" not found.`;
-        return;
-    }
-
-    // --- 3. Populate the HTML Template with Product Data ---
-    
-    // Primary Info
-    document.getElementById('product-name').textContent = product.title;
-    document.getElementById('product-id').textContent = product.variants[0].sku;
-    document.getElementById('product-price').textContent = `$${product.variants[0].price.toFixed(2)}`;
-    document.getElementById('product-description').textContent = product.description_short;
-
-    // Breadcrumb and Image
-    document.getElementById('breadcrumb-name').textContent = product.title;
-    document.getElementById('main-product-image').src = product.image_url;
-    document.getElementById('main-product-image').alt = product.title;
-
-    // Set the product ID on the Add to Cart button for purchase logic
-    const addToCartBtn = document.getElementById('add-to-cart-detail');
-    if (addToCartBtn) {
-        addToCartBtn.setAttribute('data-product-id', product.id);
-        // Optional: Also set the price/name data if you need it for the cart logic
-        addToCartBtn.setAttribute('data-product-name', product.title);
-        addToCartBtn.setAttribute('data-product-price', product.variants[0].price.toFixed(2));
-    }
-
-    // Dynamic Details List
-    const detailsList = document.getElementById('product-details-list');
-    detailsList.innerHTML = ''; // Clear previous content
-    
-    // Using the 'tags' array from the sample JSON for the details list
-    if (product.tags && product.tags.length > 0) {
-        product.tags.forEach(tag => {
-            const li = document.createElement('li');
-            li.textContent = `• ${tag}`; // Adding a bullet point for style
-            detailsList.appendChild(li);
-        });
-    } else {
-        const li = document.createElement('li');
-        li.textContent = "No specific details available.";
-        detailsList.appendChild(li);
-    }
-}); 
-// Add to card function
-document.addEventListener('DOMContentLoaded', () => {
-    const qtyInput = document.querySelector('.qty-input');
-    const minusBtn = document.querySelector('.qty-btn:first-child');
-    const plusBtn = document.querySelector('.qty-btn:nth-child(3)');
-
-    if (!qtyInput || !minusBtn || !plusBtn) return;
-
-    minusBtn.addEventListener('click', () => {
-        let currentValue = parseInt(qtyInput.value);
-        let minValue = parseInt(qtyInput.min) || 1; 
-
-        if (currentValue > minValue) {
-            qtyInput.value = currentValue - 1;
-        }
-    });
-
-    plusBtn.addEventListener('click', () => {
-        let currentValue = parseInt(qtyInput.value);
-        qtyInput.value = currentValue + 1;
-    });
-
-    
-});
-
-</script>
+<script src="java/Index.js"></script>
+<script src="/java/All Matcha.js"></script>
+<script src="/java/product-detail.js"></script>
+<script src="/java/cart.js"></script>
 </html>

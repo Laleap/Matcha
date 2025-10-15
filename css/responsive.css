@@ -1,0 +1,428 @@
+
+@media (max-width: 900px) {
+    
+    .menu-wrapper {
+        
+        position: fixed;
+        top: var(--header-height); 
+        width: 100%;
+        height: calc(100vh - var(--header-height)); 
+        background-color: #FFFFFF; 
+        overflow-y: auto; 
+        transform: translateX(100%); 
+        transition: transform 0.3s ease-in-out; 
+        display: flex; 
+        justify-content: flex-start; 
+    }
+
+    
+    .menu-list {
+        flex-direction: column; /* Stack menu items vertically */
+        width: 100%;
+    }
+    
+    .menu-list > li {
+        width: 100%;
+        border-bottom: 1px solid var(--light-green); /* Optional separator */
+    }
+    
+    /* 2. VISIBLE STATE (When JavaScript adds the 'active' class) */
+    .menu-wrapper.active {
+        transform: translateX(0); /* Slide back onto the screen */
+    }
+    
+    /* 3. MOBILE SUBMENU HANDLING (When JavaScript adds the 'active' class to the list item) */
+    .menu-list > li > .submenu {
+        /* Reset absolute positioning for mobile and make it inline */
+        position: static;
+        display: none; /* Keep submenu hidden by default */
+        opacity: 1; /* Override desktop opacity transition */
+        pointer-events: auto;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        background-color: var(--light-green); /* Use a different background for clarity */
+    }
+    
+    .menu-list > li.active > .submenu {
+        display: block;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    
+    main {
+        width: 100%; 
+        padding: 0 15px;
+    }
+    .header-container,
+    .footer-container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    .MainContent {
+        width: 100%; /* Override fixed 1000px width */
+        margin: 60px auto;
+        padding: 0 15px;
+    }
+}
+
+/* --- MOBILE MENU ACTIVATION (<= 900px) --- */
+@media (max-width: 900px) {
+    /* Menu Wrapper: Hidden by default on mobile, then slides in */
+    .menu-wrapper {
+        position: fixed;
+        top: var(--header-height); 
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height)); 
+        background-color: #FFFFFF; 
+        overflow-y: auto; 
+        transform: translateX(100%); /* Hides menu off-screen to the right */
+        transition: transform 0.3s ease-in-out; 
+        display: block; 
+    }
+    .menu-wrapper.active {
+        transform: translateX(0); /* Slides menu onto screen (triggered by JS) */
+    }
+    
+    /* Menu List Stacking */
+    .menu-list {
+        flex-direction: column; 
+        height: auto;
+        width: 100%;
+        padding-bottom: 20px;
+    }
+    .menu-list > li {
+        padding: 0;
+        border-bottom: 1px solid #eee;
+        display: block;
+        width: 100%;
+    }
+    .menu-list > li > a {
+        padding: 15px 20px;
+        text-align: left;
+    }
+    
+    /* Submenu inside Mobile Menu */
+    .submenu {
+        position: static; /* Allows submenu to expand naturally below parent */
+        display: none; /* Submenus are hidden by default */
+        opacity: 1; /* Reset opacity */
+        box-shadow: none;
+        padding-left: 15px;
+        transform: none;
+        background-color: var(--light-green); 
+    }
+    /* Disable desktop hover effect on mobile (rely on JS to toggle 'active' class) */
+    .menu-list > li:hover > .submenu {
+        display: none; 
+    }
+
+     .Daily {
+        /* Revert to desktop flex behavior */
+        display: flex; 
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* IMPORTANT: Allows horizontal scrolling if items are too wide */
+        justify-content: flex-start;
+        gap: 2px; /* Minimal gap */
+    }
+    .Daily-image {
+        /* Force minimal width for all 4 items to fit or encourage scrolling */
+        width: 25%;
+        min-width: 100px; /* Set a bare minimum width */
+        max-width: none; /* Remove previous max-width constraint */
+        flex-shrink: 0; /* Ensures all items are visible for scrolling */
+        margin: 0;
+    }
+    /* --- BEST SELLER & RECIPES --- */
+    .product-container {
+        /* Revert to desktop flex behavior */
+        display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Allows horizontal scrolling if items are too wide */
+        justify-content: flex-start;
+        gap: 5px; /* Minimal gap */
+    }
+    .product-card {
+        /* Force minimal width for all 4 items */
+        width: 25%;
+        min-width: 100px; 
+        height: 200px; /* Significantly reduced height */
+        flex-shrink: 0;
+        margin: 0;
+    }
+    .product-card img {
+        height: 60%; /* Shrink image */
+    }
+    .product-card h3, .product-card p, .product-card li {
+        font-size: 0.7rem; /* Shrink text severely */
+    }
+
+    /* --- ABOUT SECTION --- */
+    .about-image {
+        flex-direction: column; /* Stack images vertically */
+        gap: 10px;
+        align-items: center;
+    }
+    .about-image img {
+        width: 90%; /* Single image takes most width */
+        height: 200px;
+    }
+}
+/* --- TABLET LAYOUT (<= 768px) --- */
+@media (max-width: 768px) {
+    
+    /* --- HERO SECTION --- */
+    .HomePage .text h1 { font-size: 2.5rem; }
+    .HomePage .text p { font-size: 1.2rem; }
+
+    /* --- DAILY RITUALS (.Daily) --- */
+ .Daily {
+        /* Revert to desktop flex behavior */
+        display: flex; 
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* IMPORTANT: Allows horizontal scrolling if items are too wide */
+        justify-content: flex-start;
+        gap: 2px; /* Minimal gap */
+    }
+    .Daily-image {
+        /* Force minimal width for all 4 items to fit or encourage scrolling */
+        width: 50%;
+        min-width: 100px; /* Set a bare minimum width */
+        max-width: none; /* Remove previous max-width constraint */
+        flex-shrink: 0; /* Ensures all items are visible for scrolling */
+        margin: 0;
+    }
+    /* --- BEST SELLER & RECIPES --- */
+    .product-container {
+        /* Revert to desktop flex behavior */
+        display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Allows horizontal scrolling if items are too wide */
+        justify-content: flex-start;
+        gap: 5px; /* Minimal gap */
+    }
+    .product-card {
+        /* Force minimal width for all 4 items */
+        width: 25%;
+        min-width: 100px; 
+        height: 200px; /* Significantly reduced height */
+        flex-shrink: 0;
+        margin: 0;
+    }
+    .product-card img {
+        height: 60%; /* Shrink image */
+    }
+    .product-card h3, .product-card p, .product-card li {
+        font-size: 0.7rem; /* Shrink text severely */
+    }
+
+    /* --- ABOUT SECTION --- */
+    .about-image {
+        flex-direction: column; /* Stack images vertically */
+        gap: 10px;
+        align-items: center;
+    }
+    .about-image img {
+        width: 90%; /* Single image takes most width */
+        height: 200px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    
+    /* --- TYPOGRAPHY SCALING --- */
+    .HomePage .text h1 { font-size: 1.8rem; }
+    .HomePage .text p { font-size: 1rem; }
+    .MainContent h1, .best-seller h1, .Recipes h1 { font-size: 1.5rem; }
+
+    /* --- DAILY RITUALS --- */
+    .Daily {
+        /* Revert to desktop flex behavior */
+        display: flex; 
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* IMPORTANT: Allows horizontal scrolling if items are too wide */
+        justify-content: flex-start;
+        gap: 5px; /* Minimal gap */
+    }
+    .MainContent h1{
+        font-size: 1.5rem; 
+        text-align: center;
+        margin: 10px 0;
+    }
+    .Daily h3{
+        font-size: 0.7rem; 
+        text-align: center;
+        margin: 10px 0;
+    }
+    .Daily-image {
+        width: 24%;
+        min-width: 90px; 
+        height: 200px; /* Significantly reduced height */
+        flex-shrink: 0;
+        margin: 0;
+    }
+    .Daily-image img{
+        height:40%;
+    }
+    /* --- BEST SELLER & RECIPES --- */
+    .product-container {
+        /* Revert to desktop flex behavior */
+        display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Allows horizontal scrolling if items are too wide */
+        justify-content: flex-start;
+        gap: 5px; /* Minimal gap */
+    }
+    .product-card {
+        /* Force minimal width for all 4 items */
+        width: 25%;
+        min-width: 100px; 
+        height: 200px; /* Significantly reduced height */
+        flex-shrink: 0;
+        margin: 0;
+    }
+    .product-card img {
+        height: 60%; /* Shrink image */
+    }
+    .product-card h3, .product-card p, .product-card li {
+        font-size: 0.7rem; /* Shrink text severely */
+    }
+    
+        .Best-matcha {
+        float: none; /* Remove problematic float */
+        width: 100%; /* Ensure full width */
+        padding: 20px 0;
+    }
+
+    .Best-matcha img,
+    .matcha-text {
+        float: none; /* Remove problematic float */
+        width: 100%; /* Force full width */
+        margin: 0;
+        padding: 0;
+    }
+    
+    .Best-matcha img {
+        height: auto;
+        margin-bottom: 20px; /* Space between image and text */
+    }
+
+    .matcha-text h1 {
+        font-size: 1.5rem; /* Scale down title */
+        text-align: center;
+        margin: 10px 0;
+    }
+    .matcha-text p {
+        font-size: 1.1rem; /* Scale down paragraph text */
+        text-align: center;
+        padding: 0 10px;
+        margin: 15px 0;
+    }
+    .matcha-text .btn {
+        margin: 20px auto;
+        display: block; 
+        width: fit-content;
+        padding: 12px 25px; /* Shrink button size */
+        font-size: 0.9rem;
+    }
+    /* --- ABOUT SECTION --- */
+    .about .box,
+    .about .box:nth-child(2) {
+        /* Reset both boxes to column stacking */
+        flex-direction: column; 
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    /* 2. Ensure Text and Image Blocks Use Full Width */
+    .about-text,
+    .about-image {
+        width: 100%;
+        margin: 0;
+    }
+
+    /* 3. Style Text Block */
+    .about-text h1 {
+        font-size: 1.5rem;
+        text-align: center; /* Center the heading */
+        margin: 10px 0;
+        border-bottom: none; /* Remove border from tablet view */
+    }
+    .about-text p {
+        font-size: 1.1rem;
+        text-align: center; /* Center the paragraph text */
+        padding: 0 10px;
+        margin: 15px 0; 
+    }
+    
+    /* 4. Force Images within the Image Block to Stack Vertically */
+    .about-image {
+        flex-direction: column; /* Stack the multiple images */
+        gap: 10px;
+        align-items: center; /* Center the image stack */
+    }
+
+    /* 5. Size Individual Images (Full width of the container) */
+    .about-image img {
+        width: 90%; /* Give some padding on the sides */
+        max-width: 350px;
+        height: 200px;
+    }
+    /* --- FOOTER --- */
+    .footer-columns {
+        grid-template-columns: repeat(2,1fr); 
+        text-align: left;
+    }
+    .footer-payment ul {
+        justify-content: center;
+    }
+
+
+    /* Product-Matcha */
+    .product-matcha {
+        /* Ensure it's a grid container */
+        display: grid; 
+        
+        /* Forces 3 equally spaced columns */
+        grid-template-columns: repeat(2, 1fr); 
+        
+        /* Tighten the gap for small screens */
+        gap: 8px; 
+    }
+    .product h1{
+        font-size: 1.5rem; 
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    
+    .product-grid {
+        width: 100%; 
+        height: auto;
+    }
+    
+    .product-grid .product-img-main {
+        /* Ensure images scale correctly */
+        height: 100px; 
+        object-fit: cover;
+    }
+    
+    .product-grid .product-title,
+    .product-grid .product-price {
+        /* Drastically shrink text to fit 3 columns */
+        font-size: 0.7rem; 
+        margin: 3px 0;
+        white-space: nowrap; /* Prevent title wrapping */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Add "..." if text is too long */
+    }
+    
+    .product-grid .add-to-cart-btn {
+        padding: 5px 0;
+        font-size: 0.6rem;
+    }
+}
