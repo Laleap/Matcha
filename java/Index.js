@@ -15,18 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Toggle submenus on mobile
         menuItems.forEach(item => {
-            const submenu = item.querySelector('.submenu'); // Get the submenu
-            
-            // Only attach listener if a submenu exists for this item
+            const submenu = item.querySelector('.submenu');
             if (submenu) {
                 item.addEventListener('click', function(e) {
-                    // Only apply toggle logic on mobile/tablet screen sizes
                     if (window.innerWidth <= 768) {
-                        // Prevent the link from navigating if it has a submenu
                         e.preventDefault();
                         this.classList.toggle('active');
-                        // Optional: Toggle the submenu's own class if needed for smooth transition
-                        // submenu.classList.toggle('visible'); 
+                        
                     }
                 });
             }

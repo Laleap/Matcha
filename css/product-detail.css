@@ -6,7 +6,7 @@
 .container h1{
     text-align: center;
     margin-bottom: 20px;
-    color: #38761d; /* Matcha green color */
+    color: #38761d; 
 }
 
 
@@ -36,7 +36,7 @@
 .product-price {
     font-size: 2em;
     font-weight: bold;
-    color: #b45f06; /* A contrasting color for price */
+    color: #b45f06; 
     margin: 20px 0;
 }
 
@@ -46,16 +46,15 @@
     border-top: 1px solid #eee;
     margin-top: 20px;
 }
-/* --- Purchase Options Container --- */
+
 .purchase-options {
-    display: flex; /* Arrange buttons and input in a row */
-    align-items: center; /* Vertically align items */
-    gap: 10px; /* Space between elements */
+    display: flex; 
+    align-items: center;
+    gap: 10px; 
     margin-top: 30px;
 }
 .qty-btn {
-    /* Basic button styling */
-    background-color: #f0f0f0; /* Light background for neutral look */
+    background-color: #f0f0f0; 
     color: #38761d;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -80,7 +79,6 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1em;
-    /* Hide the default number input spinners/arrows */
     -moz-appearance: textfield; 
 }
 .qty-input::-webkit-outer-spin-button,

@@ -79,15 +79,14 @@
         height: calc(100vh - var(--header-height)); 
         background-color: #FFFFFF; 
         overflow-y: auto; 
-        transform: translateX(100%); /* Hides menu off-screen to the right */
+        transform: translateX(100%); 
         transition: transform 0.3s ease-in-out; 
         display: block; 
     }
     .menu-wrapper.active {
-        transform: translateX(0); /* Slides menu onto screen (triggered by JS) */
+        transform: translateX(0); 
     }
     
-    /* Menu List Stacking */
     .menu-list {
         flex-direction: column; 
         height: auto;
@@ -105,148 +104,139 @@
         text-align: left;
     }
     
-    /* Submenu inside Mobile Menu */
+    
     .submenu {
-        position: static; /* Allows submenu to expand naturally below parent */
-        display: none; /* Submenus are hidden by default */
-        opacity: 1; /* Reset opacity */
+        position: static; 
+        display: none; 
+        opacity: 1; 
         box-shadow: none;
         padding-left: 15px;
         transform: none;
         background-color: var(--light-green); 
     }
-    /* Disable desktop hover effect on mobile (rely on JS to toggle 'active' class) */
+  
     .menu-list > li:hover > .submenu {
         display: none; 
     }
 
      .Daily {
-        /* Revert to desktop flex behavior */
+        
         display: flex; 
-        flex-wrap: nowrap; /* Prevent wrapping */
-        overflow-x: auto; /* IMPORTANT: Allows horizontal scrolling if items are too wide */
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
         justify-content: flex-start;
-        gap: 2px; /* Minimal gap */
+        gap: 2px; 
     }
     .Daily-image {
-        /* Force minimal width for all 4 items to fit or encourage scrolling */
-        width: 25%;
-        min-width: 100px; /* Set a bare minimum width */
-        max-width: none; /* Remove previous max-width constraint */
-        flex-shrink: 0; /* Ensures all items are visible for scrolling */
-        margin: 0;
-    }
-    /* --- BEST SELLER & RECIPES --- */
-    .product-container {
-        /* Revert to desktop flex behavior */
-        display: flex;
-        flex-wrap: nowrap; /* Prevent wrapping */
-        overflow-x: auto; /* Allows horizontal scrolling if items are too wide */
-        justify-content: flex-start;
-        gap: 5px; /* Minimal gap */
-    }
-    .product-card {
-        /* Force minimal width for all 4 items */
+        
         width: 25%;
         min-width: 100px; 
-        height: 200px; /* Significantly reduced height */
+        max-width: none; 
+        flex-shrink: 0; 
+        margin: 0;
+    }
+  
+    .product-container {
+        display: flex;
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
+        justify-content: flex-start;
+        gap: 5px; 
+    }
+    .product-card {
+        width: 25%;
+        min-width: 100px; 
+        height: 200px; 
         flex-shrink: 0;
         margin: 0;
     }
     .product-card img {
-        height: 60%; /* Shrink image */
+        height: 60%; 
     }
     .product-card h3, .product-card p, .product-card li {
-        font-size: 0.7rem; /* Shrink text severely */
+        font-size: 0.7rem; 
     }
-
-    /* --- ABOUT SECTION --- */
     .about-image {
-        flex-direction: column; /* Stack images vertically */
+        flex-direction: column; 
         gap: 10px;
         align-items: center;
     }
     .about-image img {
-        width: 90%; /* Single image takes most width */
+        width: 90%; 
         height: 200px;
     }
 }
-/* --- TABLET LAYOUT (<= 768px) --- */
 @media (max-width: 768px) {
-    
-    /* --- HERO SECTION --- */
+
     .HomePage .text h1 { font-size: 2.5rem; }
     .HomePage .text p { font-size: 1.2rem; }
 
-    /* --- DAILY RITUALS (.Daily) --- */
  .Daily {
-        /* Revert to desktop flex behavior */
+        
         display: flex; 
-        flex-wrap: nowrap; /* Prevent wrapping */
-        overflow-x: auto; /* IMPORTANT: Allows horizontal scrolling if items are too wide */
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
         justify-content: flex-start;
-        gap: 2px; /* Minimal gap */
+        gap: 2px; 
     }
     .Daily-image {
-        /* Force minimal width for all 4 items to fit or encourage scrolling */
+       
         width: 50%;
-        min-width: 100px; /* Set a bare minimum width */
-        max-width: none; /* Remove previous max-width constraint */
-        flex-shrink: 0; /* Ensures all items are visible for scrolling */
+        min-width: 100px; 
+        max-width: none; 
+        flex-shrink: 0; 
         margin: 0;
     }
-    /* --- BEST SELLER & RECIPES --- */
+  
     .product-container {
-        /* Revert to desktop flex behavior */
+      
         display: flex;
-        flex-wrap: nowrap; /* Prevent wrapping */
-        overflow-x: auto; /* Allows horizontal scrolling if items are too wide */
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
         justify-content: flex-start;
-        gap: 5px; /* Minimal gap */
+        gap: 5px; 
     }
     .product-card {
-        /* Force minimal width for all 4 items */
         width: 25%;
         min-width: 100px; 
-        height: 200px; /* Significantly reduced height */
+        height: 200px; 
         flex-shrink: 0;
         margin: 0;
     }
     .product-card img {
-        height: 60%; /* Shrink image */
+        height: 60%; 
     }
     .product-card h3, .product-card p, .product-card li {
-        font-size: 0.7rem; /* Shrink text severely */
+        font-size: 0.7rem; 
     }
 
-    /* --- ABOUT SECTION --- */
+   
     .about-image {
-        flex-direction: column; /* Stack images vertically */
+        flex-direction: column; 
         gap: 10px;
         align-items: center;
     }
     .about-image img {
-        width: 90%; /* Single image takes most width */
+        width: 90%; 
         height: 200px;
     }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
     
-    /* --- TYPOGRAPHY SCALING --- */
+    
     .HomePage .text h1 { font-size: 1.8rem; }
     .HomePage .text p { font-size: 1rem; }
     .MainContent h1, .best-seller h1, .Recipes h1 { font-size: 1.5rem; }
 
-    /* --- DAILY RITUALS --- */
+    
     .Daily {
-        /* Revert to desktop flex behavior */
+        
         display: flex; 
-        flex-wrap: nowrap; /* Prevent wrapping */
-        overflow-x: auto; /* IMPORTANT: Allows horizontal scrolling if items are too wide */
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
         justify-content: flex-start;
-        gap: 5px; /* Minimal gap */
+        gap: 5px; 
     }
     .MainContent h1{
         font-size: 1.5rem; 
@@ -261,63 +251,63 @@
     .Daily-image {
         width: 24%;
         min-width: 90px; 
-        height: 200px; /* Significantly reduced height */
+        height: 200px; 
         flex-shrink: 0;
         margin: 0;
     }
     .Daily-image img{
         height:40%;
     }
-    /* --- BEST SELLER & RECIPES --- */
+    
     .product-container {
-        /* Revert to desktop flex behavior */
+       
         display: flex;
-        flex-wrap: nowrap; /* Prevent wrapping */
-        overflow-x: auto; /* Allows horizontal scrolling if items are too wide */
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
         justify-content: flex-start;
-        gap: 5px; /* Minimal gap */
+        gap: 5px; 
     }
     .product-card {
-        /* Force minimal width for all 4 items */
+        
         width: 25%;
         min-width: 100px; 
-        height: 200px; /* Significantly reduced height */
+        height: 200px; 
         flex-shrink: 0;
         margin: 0;
     }
     .product-card img {
-        height: 60%; /* Shrink image */
+        height: 60%; 
     }
     .product-card h3, .product-card p, .product-card li {
-        font-size: 0.7rem; /* Shrink text severely */
+        font-size: 0.7rem; 
     }
     
         .Best-matcha {
-        float: none; /* Remove problematic float */
-        width: 100%; /* Ensure full width */
+        float: none; 
+        width: 100%; 
         padding: 20px 0;
     }
 
     .Best-matcha img,
     .matcha-text {
-        float: none; /* Remove problematic float */
-        width: 100%; /* Force full width */
+        float: none; 
+        width: 100%; 
         margin: 0;
         padding: 0;
     }
     
     .Best-matcha img {
         height: auto;
-        margin-bottom: 20px; /* Space between image and text */
+        margin-bottom: 20px; 
     }
 
     .matcha-text h1 {
-        font-size: 1.5rem; /* Scale down title */
+        font-size: 1.5rem; 
         text-align: center;
         margin: 10px 0;
     }
     .matcha-text p {
-        font-size: 1.1rem; /* Scale down paragraph text */
+        font-size: 1.1rem; 
         text-align: center;
         padding: 0 10px;
         margin: 15px 0;
@@ -326,53 +316,52 @@
         margin: 20px auto;
         display: block; 
         width: fit-content;
-        padding: 12px 25px; /* Shrink button size */
+        padding: 12px 25px; 
         font-size: 0.9rem;
     }
-    /* --- ABOUT SECTION --- */
+    
     .about .box,
     .about .box:nth-child(2) {
-        /* Reset both boxes to column stacking */
         flex-direction: column; 
         gap: 20px;
         padding: 15px;
     }
     
-    /* 2. Ensure Text and Image Blocks Use Full Width */
+    
     .about-text,
     .about-image {
         width: 100%;
         margin: 0;
     }
 
-    /* 3. Style Text Block */
+    
     .about-text h1 {
         font-size: 1.5rem;
-        text-align: center; /* Center the heading */
+        text-align: center; 
         margin: 10px 0;
-        border-bottom: none; /* Remove border from tablet view */
+        border-bottom: none; 
     }
     .about-text p {
         font-size: 1.1rem;
-        text-align: center; /* Center the paragraph text */
+        text-align: center; 
         padding: 0 10px;
         margin: 15px 0; 
     }
     
-    /* 4. Force Images within the Image Block to Stack Vertically */
+   
     .about-image {
-        flex-direction: column; /* Stack the multiple images */
+        flex-direction: column; 
         gap: 10px;
-        align-items: center; /* Center the image stack */
+        align-items: center;
     }
 
-    /* 5. Size Individual Images (Full width of the container) */
+  
     .about-image img {
-        width: 90%; /* Give some padding on the sides */
+        width: 90%; 
         max-width: 350px;
         height: 200px;
     }
-    /* --- FOOTER --- */
+ 
     .footer-columns {
         grid-template-columns: repeat(2,1fr); 
         text-align: left;
@@ -382,15 +371,11 @@
     }
 
 
-    /* Product-Matcha */
+   
     .product-matcha {
-        /* Ensure it's a grid container */
         display: grid; 
-        
-        /* Forces 3 equally spaced columns */
         grid-template-columns: repeat(2, 1fr); 
-        
-        /* Tighten the gap for small screens */
+    
         gap: 8px; 
     }
     .product h1{
@@ -404,21 +389,17 @@
         width: 100%; 
         height: auto;
     }
-    
     .product-grid .product-img-main {
-        /* Ensure images scale correctly */
         height: 100px; 
         object-fit: cover;
     }
-    
     .product-grid .product-title,
     .product-grid .product-price {
-        /* Drastically shrink text to fit 3 columns */
         font-size: 0.7rem; 
         margin: 3px 0;
-        white-space: nowrap; /* Prevent title wrapping */
+        white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis; /* Add "..." if text is too long */
+        text-overflow: ellipsis;
     }
     
     .product-grid .add-to-cart-btn {

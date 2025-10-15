@@ -1,16 +1,13 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // --- 1. Get the Product ID from the URL ---
+    //  Get the Product ID from the URL 
     const urlParams = new URLSearchParams(window.location.search);
-    // Assumes the URL is like: product-detail.html?id=matcha001
     const productId = urlParams.get('id');
 
     if (!productId) {
         document.getElementById('product-name').textContent = "Product ID Missing. Cannot load details.";
         return;
     }
-
-    // --- 2. Fetch the Product Data (Using the sample structure) ---
-    // NOTE: In a real environment, replace 'products.json' with your actual file path or API endpoint.
+    //  Fetch Product Data 
     let product;
     try {
         const response = await fetch('products.json');
@@ -30,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    // --- 3. Populate the HTML Template with Product Data ---
+    // Populate the HTML Template with Product Data
     
     // Primary Info
     document.getElementById('product-name').textContent = product.title;

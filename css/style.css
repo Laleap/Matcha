@@ -106,24 +106,23 @@ header {
 
 .submenu {
     position: absolute;
-    top: var(--header-height); /* Drops down exactly below the header */
+    top: var(--header-height); 
     left: 10%;
     max-width: 1200px;
     background-color: #FFFFFF;
     border: 1px solid #FFFFFF;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     
-    /* Initially hidden and smoothly transition visibility */
+    
     display: none; 
     opacity: 0;
-    pointer-events: none; /* Ignore mouse events when hidden */
+    pointer-events: none; 
     transition: opacity 0.3s ease, transform 0.3s ease;
-    transform: translateY(10px); /* Start slightly lower */
+    transform: translateY(10px); 
     z-index: 10; 
 }
 
-.menu-list > li:hover > .submenu {
-    /* Show submenu on hover */
+.menu-list > li:hover > .submenu {  
     display: block; 
     opacity: 1;
     pointer-events: auto;
@@ -131,7 +130,6 @@ header {
 }
 
 .submenu li a {
-    /* Submenu links */
     display: block;
     padding: 10px 15px;
     font-size: 0.95rem;
@@ -199,27 +197,25 @@ main{
   width:75%;
   margin:0 auto;
   overflow:hidden;
-  /* background-color: #b3b4b3; */
+  
 }
-/* --- 1. CORE VIEWPORT (The Frame) --- */
-/* This defines the visible area for the slider and positions the text content */
+
 .HomePage {
     width: 100%;
     min-height: 80vh; 
     position: relative; 
-    overflow: hidden; /* CRUCIAL: Hides the slides that are off-screen */
+    overflow: hidden; 
 
-    /* Centers the text content over the slides */
+   
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 
-    /* Removed conflicting static background-image, background-size, etc. */
-    /* Removed the conflicting height: 500px; */
+
 }
 
-/* Optional: Add a subtle overlay for better text contrast */
+
 .HomePage::before {
     content: '';
     position: absolute;
@@ -227,17 +223,14 @@ main{
     left: 0;
     width: 100%;
     height: 100%;
-    /* Use a dedicated overlay over the slides for text legibility */
     background-color: rgba(39, 143, 56, 0.2); 
-    z-index: 2; /* Below text (z-index: 3) */
+    z-index: 2; 
 }
 
-/* --- 2. THE SLIDING TRACK (The Engine) --- */
-/* This element moves horizontally via JavaScript's transform: translateX() */
 .slide-track {
-    width: 400%; /* Total width for 4 slides (100% * 4) */
+    width: 400%; 
     height: 100%;
-    display: flex; /* Makes slides sit side-by-side */
+    display: flex; 
     position: absolute;
     top: 0;
     left: 0;
@@ -285,7 +278,6 @@ main{
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* --- 5. CALL-TO-ACTION BUTTON (CTA) --- */
 .btn {
     display: inline-block;
     padding: 18px 35px;

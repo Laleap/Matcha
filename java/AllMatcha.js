@@ -18,21 +18,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    // --- Loop and Clone ---
+    // Loop through products and create cards
     products.forEach(product => {
-        // 1. Clone the hidden template card
+        //  Clone the hidden template card
         const newCard = template.cloneNode(true);
         newCard.style.display = 'block'; 
         newCard.removeAttribute('id');
 
-        // 2. Target elements for data injection
+        //  Target elements for data injection
         const link = newCard.querySelector('.product-link');
         const img = newCard.querySelector('.product-img-main');
         const title = newCard.querySelector('.product-title');
         const price = newCard.querySelector('.product-price');
         const viewBtn = newCard.querySelector('.add-to-cart-btn');
 
-        // 3. Populate Data and Set Links
+        //  Populate Data and Set Links
         const detailUrl = `product-detail.html?id=${product.id}`;
         
         // Link wrapper
@@ -53,16 +53,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         // "View Details" button
         viewBtn.href = detailUrl;
 
-        // 4. Add the card to the shop container
+        //  Add the card to the shop container
         container.appendChild(newCard);
     });
-
-    // --- Initialize Dynamic Effects ---
-    // You MUST call the image swap function AFTER the cards are created
+    //Image swap on hover
     initializeImageSwap(); 
 });
 
-// Re-pasting the image swap function for completeness:
+// image swap function for completeness:
 function initializeImageSwap() {
     const productImages = document.querySelectorAll('.product-img-main');
     productImages.forEach(img => {

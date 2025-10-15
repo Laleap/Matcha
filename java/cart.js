@@ -40,7 +40,6 @@ function removeItem(productId) {
     if (cartItems.length === 0) {
         toggleCartOverlay(false);
     }
-    // NO saveCart() CALL HERE
 }
 
 function updateCartDisplay() {
@@ -112,7 +111,7 @@ function toggleCartOverlay(show) {
 document.addEventListener('DOMContentLoaded', () => {
     updateCartDisplay(); 
 
-    // (Open/Close Cart) ---
+    // (Open/Close Cart) 
     if (openCartLink) {
         openCartLink.addEventListener('click', (e) => {
             e.preventDefault(); 
@@ -127,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // ---Qtantity ---
+    // ---Qtantity Controls---
     const qtyInput = document.querySelector('.qty-input');
     const minusBtn = document.querySelector('.qty-btn:first-child');
     const plusBtn = document.querySelector('.qty-btn:nth-child(3)');
@@ -154,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         addToCartDetailButton.addEventListener('click', (e) => {
             e.preventDefault();
 
-            // 1. Capture Data from the page elements
+            //Capture Data from the page elements
             const productId = document.getElementById('product-id').textContent.trim() || 'NO-SKU'; 
             const productName = document.getElementById('product-name').textContent.trim() || 'Unknown Product';
             const priceText = document.getElementById('product-price').textContent.trim();
@@ -163,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Get the image source from the main product image element
             const productImageUrl = document.getElementById('main-product-image').src; 
 
-            // 2. Add item(s) and update UI
+            // Add item(s) and update UI
             if (productPrice > 0 && productId !== 'NO-SKU') {
                 for (let i = 0; i < quantity; i++) {
                     // Pass the image URL here

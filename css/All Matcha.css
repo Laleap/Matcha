@@ -88,18 +88,15 @@
 .btn:hover {
     background-color: red; 
 }
-
-/* --- Responsive Adjustments --- */
 @media (min-width: 650px) {
-    /* On larger screens, set the width so more items fit per row */
+    
     .product-grid {
-        width: calc(50% - 15px); /* Two columns with spacing */
+        width: calc(50% - 15px); 
     }
 }
 
 @media (min-width: 950px) {
-    /* On desktop, set the width for three columns */
     .product-grid {
-        width: calc(33.333% - 20px); /* Three columns with spacing */
+        width: calc(33.333% - 20px); 
     }
 }
